@@ -5,8 +5,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PTC.Domain.EF.Context;
+using PTC.Domain.EF.Queries;
 using PTC.Domain.EF.Services;
 using PTC.Domain.Interfaces;
+using PTC.Domain.Queries.Providers;
 
 namespace PTC
 {
@@ -24,6 +26,12 @@ namespace PTC
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+
+            #region Queries and Commands Dependancy Injection
+
+            services.AddTransient(typeof(IQueryProvider<>), typeof(QueryProvider<>));
+
+            #endregion
 
             #region ApplicationContext
 
