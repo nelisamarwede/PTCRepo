@@ -5,12 +5,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace PTC.Domain.EF.Mappings.Entities
 {
-    public class TaxCalculationTypeMapping : EntityMapping<TaxCalculationType>
+    public class TaxTypeMapping : EntityMapping<TaxType>
     {
-        public override void Configure(EntityTypeBuilder<TaxCalculationType> builder)
+        public override void Configure(EntityTypeBuilder<TaxType> builder)
         {
-            builder.ToTable("TaxCalculationType");
-
+            builder.ToTable("TaxTypes");
+            
             builder.HasKey(i => i.Id);
             builder.Property(i => i.Id).ValueGeneratedOnAdd();
 

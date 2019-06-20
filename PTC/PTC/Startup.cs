@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using PTC.Domain.EF.Commands;
+using PTC.Domain.EF.Commands.Interface;
 using PTC.Domain.EF.Context;
 using PTC.Domain.EF.Queries;
 using PTC.Domain.EF.Services;
@@ -30,7 +32,8 @@ namespace PTC
             #region Queries and Commands Dependancy Injection
 
             services.AddTransient(typeof(IQueryProvider<>), typeof(QueryProvider<>));
-
+            services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
+            //services.AddTransient(typeof())
             #endregion
 
             #region ApplicationContext

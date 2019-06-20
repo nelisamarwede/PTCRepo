@@ -65,6 +65,8 @@
   <ItemGroup>
     <Build Include="dbo\Tables\PostalCodes.sql" />
     <Build Include="dbo\Tables\ProgressiveRates.sql" />
-    <Build Include="dbo\Tables\TaxCalcutationType.sql" />
+    <Build Include="dbo\Tables\TaxTypes.sql" />
+    <Build Include="dbo\Tables\TaxCalculations.sql" />
+    <Build Include="dbo\Tables\FlatRates.sql" />
   </ItemGroup>
 </Project>

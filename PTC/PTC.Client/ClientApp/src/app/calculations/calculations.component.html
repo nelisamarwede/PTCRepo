@@ -1,0 +1,34 @@
+<h1>Add Calculations</h1>
+
+<p>Process new calculations</p>
+
+
+<form>
+
+  <div class="body-content">
+
+    <table class="form-group">
+      <thead>
+        <tr>
+          <td>Full Name</td>
+          <td>Income</td>
+          <td>Postal Code</td>
+          <td>Tax Type</td>
+          <td>Calculated Tax</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="form-control" type="text" /></td>
+          <td><input class="form-control" type="number" /></td>
+          <td><select class="form-control" name="postalCodes" [(ngModel)]="postalCodes.taxTypeId">
+                <option *ngFor="let code of postalCodes" [value]="code.id">{{code.codeName}}</option>
+            </select></td>
+          <td><select class="form-control"><option></option></select></td>
+          <td><input class="form-control" type="text" disabled /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</form>

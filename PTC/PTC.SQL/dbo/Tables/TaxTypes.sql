@@ -1,4 +1,4 @@
-﻿CREATE TABLE [dbo].[TaxCalculationType](
+﻿CREATE TABLE [dbo].[TaxTypes](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[TypeName] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_TaxCalculationType] PRIMARY KEY CLUSTERED 

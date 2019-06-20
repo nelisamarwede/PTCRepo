@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PTC.Domain.Entities
 {
-    public class TaxCalculationType : IEntity, IEntityLookup
+    public class TaxType : IEntity, IEntityLookup
     {
         public int? Id { get; set; }
         public string TypeName { get; set; }

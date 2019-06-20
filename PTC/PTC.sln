@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.329
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC.API", "PTC\PTC.API.csproj", "{711AFD14-21C6-4D3A-80DA-0755855EAF7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTC.API", "PTC\PTC.API.csproj", "{711AFD14-21C6-4D3A-80DA-0755855EAF7E}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "PTC.SQL", "PTC.SQL\PTC.SQL.sqlproj", "{4E260846-191A-43DF-A9BA-B7263E2F61BB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{683ECB4F-125F-46AD-9EB4-775269227F78}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC.Domain", "PTC.Domain\PTC.Domain.csproj", "{310AB1C5-CB08-491D-B0E1-5766444C2019}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTC.Domain", "PTC.Domain\PTC.Domain.csproj", "{310AB1C5-CB08-491D-B0E1-5766444C2019}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC.Domain.EF", "PTC.Domain.EF\PTC.Domain.EF.csproj", "{038A90E5-DD8C-401A-AECB-7A4696562556}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTC.Domain.EF", "PTC.Domain.EF\PTC.Domain.EF.csproj", "{038A90E5-DD8C-401A-AECB-7A4696562556}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC.Client", "PTC.Client\PTC.Client.csproj", "{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{038A90E5-DD8C-401A-AECB-7A4696562556}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{038A90E5-DD8C-401A-AECB-7A4696562556}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{038A90E5-DD8C-401A-AECB-7A4696562556}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
