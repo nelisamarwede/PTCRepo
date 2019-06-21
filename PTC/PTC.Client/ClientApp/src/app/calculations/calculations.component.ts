@@ -12,14 +12,24 @@ import { debug } from 'util';
   templateUrl: './calculations.component.html'
 })
 
-export class CalculationsComponent {
+export class CalculationsComponent implements OnInit {
   postalCodes: PostalCode[];
 
 
-  constructor(public server: ServerService) {
-    debugger;
-    server.GetPostalCodes().subscribe(i => this.postalCodes = i);
-    debugger;
+  constructor(private server: ServerService) {
+  }
+  ngOnInit() {
+    this.server.GetPostalCodes()
+      .subscribe(i => {
+        debugger;
+
+        this.postalCodes = i;
+      });
+  }
+
+  doSomething(e) {
+    
+    console.log(e.value)
   }
 }
 

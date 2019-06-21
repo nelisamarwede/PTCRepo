@@ -27,6 +27,7 @@ namespace PTC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddCors(i => { i.AddPolicy("allowAll", p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()); });
 
 
             #region Queries and Commands Dependancy Injection
@@ -62,6 +63,7 @@ namespace PTC
                 app.UseHsts();
             }
 
+            app.UseCors("allowAll");
             app.UseHttpsRedirection();
             app.UseMvc();
         }

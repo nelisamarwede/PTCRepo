@@ -21,10 +21,22 @@
         <tr>
           <td><input class="form-control" type="text" /></td>
           <td><input class="form-control" type="number" /></td>
-          <td><select class="form-control" name="postalCodes" [(ngModel)]="postalCodes.taxTypeId">
+          <td>
+            <!--<select (change)="doSomething($event)">
+              <option value="1">Test 1</option>
+              <option value="2">Test 21</option>
+              <option value="3">Test 31</option>
+              <option value="4">Test 41</option>
+
+            </select>-->
+
+          <select class="form-control" name="postalCodes" [(ngModel)]="postalCodes.taxTypeId">
                 <option *ngFor="let code of postalCodes" [value]="code.id">{{code.codeName}}</option>
-            </select></td>
-          <td><select class="form-control"><option></option></select></td>
+            </select>
+
+          </td>
+          <td><select class="form-control"[(ngModel)]="postalCodes.taxTypeId">
+            <option *ngFor="let code of postalCode" [value]="code.taxType.id">{{code.taxType.typeName}}</option></select></td>
           <td><input class="form-control" type="text" disabled /></td>
         </tr>
       </tbody>
