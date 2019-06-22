@@ -27,7 +27,7 @@ namespace PTC.Domain.Queries
                 });
                 list.Add(new TaxType
                 {
-                    Id = 1,
+                    Id = 3,
                     TypeName = "Flat Rate"
                 });
                 return list.AsQueryable();

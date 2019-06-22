@@ -11,33 +11,32 @@
       <thead>
         <tr>
           <td>Full Name</td>
-          <td>Income</td>
+          <td>Annual Income</td>
           <td>Postal Code</td>
           <td>Tax Type</td>
-          <td>Calculated Tax</td>
+          <td>Annual Tax</td>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td><input class="form-control" type="text" /></td>
-          <td><input class="form-control" type="number" /></td>
+          <td><input class="form-control" type="text" (change)="userFullName($event)"/></td>
+          <td><input class="form-control" (change)="userIncomeInput($event)" type="number" min="1000.00" /></td>
           <td>
-            <!--<select (change)="doSomething($event)">
-              <option value="1">Test 1</option>
-              <option value="2">Test 21</option>
-              <option value="3">Test 31</option>
-              <option value="4">Test 41</option>
-
-            </select>-->
-
-          <select class="form-control" name="postalCodes" [(ngModel)]="postalCodes.taxTypeId">
-                <option *ngFor="let code of postalCodes" [value]="code.id">{{code.codeName}}</option>
+            <select  class="form-control" name="postalCodes" [(ngModel)]="postalCodes.id" (ngModelChange)="userPostalCodeInput($event)" >
+              <option *ngFor="let code of postalCodes" [value]="code.id">{{code.codeName}}</option>
             </select>
-
           </td>
-          <td><select class="form-control"[(ngModel)]="postalCodes.taxTypeId">
-            <option *ngFor="let code of postalCode" [value]="code.taxType.id">{{code.taxType.typeName}}</option></select></td>
-          <td><input class="form-control" type="text" disabled /></td>
+          <td>
+            <select ng-if="postalCodes.length" class="form-control" name="postalCodes" [ngModel]="postalCodes.id" required>
+              <option disabled *ngFor="let code of postalCodes" [value]="code.id">{{code.taxType.typeName}}</option>
+            </select>
+          </td>
+          <td><input name="total" min="1" class="form-control" type="text" disabled [value]="calculatedTax"/></td>
+        </tr>
+        <tr>
+          <td colspan="5">
+            <input (click)="addCalculation()" [disabled]="!canSubmit" type="button" class="btn btn-primary btn-lg btn-block" style="margin-top:15px;" value="Submit" />
+          </td>
         </tr>
       </tbody>
     </table>

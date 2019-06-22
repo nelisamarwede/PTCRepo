@@ -1,7 +1,8 @@
 export class TaxCalculation {
-  public Id: number;
-  public Income: number;
-  public PostalCode: string;
-  public CalculatedTax: number;
-  public CreatedDate: Date;
+  public id: number;
+  public fullName: string;
+  public income: number;
+  public postalCode: string;
+  public calculatedTax: number;
+  public createdDate: Date;
 }

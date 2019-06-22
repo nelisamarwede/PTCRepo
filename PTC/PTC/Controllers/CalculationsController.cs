@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿
+using PTC.Domain.EF.Commands;
 using PTC.Domain.EF.Commands.Interface;
 using PTC.Domain.Entities;
 using PTC.Domain.Queries.Providers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
 
 namespace PTC.API.Controllers
 {
@@ -13,41 +14,50 @@ namespace PTC.API.Controllers
     [ApiController]
     public class CalculationsController : ControllerBase
     {
-        private readonly ICalculationCommands _calculationComms;
+        private readonly CalculationCommands _calculationComms;
         private readonly IQueryProvider<TaxCalculation> _taxCalculationsQueryProvider;
-        public CalculationsController(ICalculationCommands calculationComms, IQueryProvider<TaxCalculation> taxCalculationsQueryProvider)
+        public CalculationsController(IQueryProvider<TaxCalculation> taxCalculationsQueryProvider, CalculationCommands calculationComms)
         {
             _calculationComms = calculationComms;
             _taxCalculationsQueryProvider = taxCalculationsQueryProvider;
         }
 
-        public TaxCalculation AddCalculations(TaxCalculation calculation)
-        {
+        //public TaxCalculation AddCalculations(TaxCalculation calculation)
+        //{
 
-            _calculationComms.AddCalculation(calculation);
+        //    _calculationComms.AddCalculation(calculation);
 
-            return calculation;
-        }
+        //    return calculation;
+        //}
 
-        public TaxCalculation UpdateCalculations(TaxCalculation calculation)
-        {
+        //[HttpPost]
+        //public TaxCalculation Post([FromBody]TaxCalculation calculation)
+        //{
+        //    calculation.CreatedDate = DateTime.UtcNow;
 
-            _calculationComms.UpdateCalculation(calculation);
+        //    _calculationComms.AddCalculation(calculation);
 
-            return calculation;
-        }
+        //    return calculation;
+        //}
+        //public TaxCalculation UpdateCalculations(TaxCalculation calculation)
+        //{
 
-        public bool DeleteCalculation(TaxCalculation calculation)
-        {
+        //    _calculationComms.UpdateCalculation(calculation);
 
-            _calculationComms.DeleteCalculation(calculation);
+        //    return calculation;
+        //}
 
-            return true;
-        }
+        //public bool DeleteCalculation(TaxCalculation calculation)
+        //{
+
+        //    _calculationComms.DeleteCalculation(calculation);
+
+        //    return true;
+        //}
 
         public ActionResult<IEnumerable<TaxCalculation>> Get()
         {            
-            _taxCalculationsQueryProvider.Query.ToList();
+            return _taxCalculationsQueryProvider.Query.ToList();
 
             return null;
         }

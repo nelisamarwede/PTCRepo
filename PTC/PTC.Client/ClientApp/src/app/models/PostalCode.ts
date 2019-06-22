@@ -4,9 +4,9 @@ export class PostalCode {
   public id: number;
   public codeName: string;
   public taxTypeId: string;
-  public TaxType: TaxType;
+  public taxType: TaxType;
 
   constructor() {
-    this.TaxType = new TaxType()
+    this.taxType = new TaxType()
   }
 }

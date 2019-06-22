@@ -8,6 +8,8 @@ namespace PTC.Domain.Entities
     {
         public int? Id { get; set; }
 
+        public string FullName { get; set; }
+
         public double Income { get; set; }
 
         public string PostalCode { get; set; }

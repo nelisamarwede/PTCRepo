@@ -12,6 +12,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CalculationsComponent } from './calculations/calculations.component';
 import { ServerService } from './server.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,

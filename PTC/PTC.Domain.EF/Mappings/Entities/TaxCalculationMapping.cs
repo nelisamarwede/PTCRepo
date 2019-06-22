@@ -13,6 +13,7 @@ namespace PTC.Domain.EF.Mappings.Entities
             builder.HasKey(i => i.Id);
             builder.Property(i => i.Id).ValueGeneratedOnAdd();
 
+            builder.Property(i => i.FullName).IsRequired();
             builder.Property(i => i.Income).IsRequired();
             builder.Property(i => i.PostalCode).IsRequired();
             builder.Property(i => i.CalculatedTax).IsRequired();

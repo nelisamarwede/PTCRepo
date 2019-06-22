@@ -13,9 +13,13 @@ export class ServerService {
   constructor(private http: HttpClient) { }
 
   private GetUrl(resource: string): string {
+    debugger;
     return `${environment.baseAddress}/${resource}`;
   }
 
+  public GetCalculations(): Observable<TaxCalculation[]> {
+    return this.http.get<TaxCalculation[]>(this.GetUrl("Calculations"));
+  }
 
   public GetPostalCodes(): Observable<PostalCode[]> {
     return this.http.get<PostalCode[]>(this.GetUrl("PostalCode"));
@@ -26,6 +30,11 @@ export class ServerService {
   }
 
   public AddCalculation(calculation: TaxCalculation): Observable<number> {
+    debugger;
     return this.http.post<number>(this.GetUrl("Calculations"), calculation);
+    //return this.http.post<number>(this.GetUrl("Supplier"), supplier);
   }
+  //public AddSupplier(supplier: Supplier): Observable<number> {
+  //  return this.http.post<number>(this.GetUrl("Supplier"), supplier);
+  //}
 }

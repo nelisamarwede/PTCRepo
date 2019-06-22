@@ -25,9 +25,7 @@ namespace PTC.API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<PostalCode>> Get()
         {
-
             return PostalCodeQueries.GetPostalCodeTaxTypes(_postalCodeQueryProvider, _taxCalculationTypesQueryProvider).ToList();
-
         }
     }
 }

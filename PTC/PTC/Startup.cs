@@ -34,6 +34,7 @@ namespace PTC
 
             services.AddTransient(typeof(IQueryProvider<>), typeof(QueryProvider<>));
             services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
+            services.AddTransient(typeof(CalculationCommands));
             //services.AddTransient(typeof())
             #endregion
 
