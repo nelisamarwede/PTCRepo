@@ -17,15 +17,15 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let c of calculations">
-      <td><input class="form-control" type="text" required value="{{c.fullName}}" /></td>
-      <td><input class="form-control" type="number" required value="{{c.income}}" /></td>
-      <td><input class="form-control" type="text" required value="{{c.postalCode}}" /></td>
-      <td><input class="form-control" type="text" required readonly value="{{c.postalCode}}" /></td>
-      <td><input class="form-control" type="number" required value="{{c.calculatedTax}}" /></td>
+    <tr *ngFor="let c of calculations; let i = index">
+      <td><input [(ngModel)]="c.fullName"[ngModelOptions]="{standalone: true}" class="form-control" type="text" required value="{{c.fullName}}" /></td>
+      <td><input [(ngModel)]="c.income"[ngModelOptions]="{standalone: true}" class="form-control" type="number" required value="{{c.income}}" /></td>
+      <td><input [(ngModel)]="c.postalCode"[ngModelOptions]="{standalone: true}" class="form-control" type="text" required value="{{c.postalCode}}" /></td>
+      <td><input [(ngModel)]="c.postalCode"[ngModelOptions]="{standalone: true}" class="form-control" type="text" required readonly value="{{c.postalCode}}" /></td>
+      <td><input [(ngModel)]="c.calculatedTax"[ngModelOptions]="{standalone: true}" class="form-control" type="number" required value="{{c.calculatedTax}}" /></td>
       <td>
       <input type="button" class="btn btn-primary" value="Update" (click)="updateCalculation(c)" />
-      <input type="button" class="btn btn-danger" value="Delete" (click)="deleteCalculation(c)"/>
+      <input type="button" class="btn btn-danger" value="Delete" (click)="deleteCalculation(c,i)"/>
       </td>
     </tr>
   </tbody>

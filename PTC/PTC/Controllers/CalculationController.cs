@@ -15,14 +15,14 @@ namespace PTC.API.Controllers
         private readonly CalculationCommands _calculationComms;
         private readonly IQueryProvider<TaxCalculation> _taxCalculationsQueryProvider;
         public CalculationController(IQueryProvider<TaxCalculation> taxCalculationsQueryProvider, CalculationCommands calculationComms)
-     {
+        {
             _calculationComms = calculationComms;
             _taxCalculationsQueryProvider = taxCalculationsQueryProvider;
         }
 
 
-        [HttpPost]
-        public TaxCalculation Post([FromBody]TaxCalculation calculation)
+        [HttpPut]
+        public TaxCalculation Put([FromBody]TaxCalculation calculation)
         {
             calculation.CreatedDate = DateTime.UtcNow;
 
@@ -37,21 +37,23 @@ namespace PTC.API.Controllers
 
         }
 
-        [HttpPut]
-        public ActionResult<bool> Put([FromBody] TaxCalculation calculation)
+        [HttpPatch]
+        public TaxCalculation Patch([FromBody]TaxCalculation calculation)
         {
             _calculationComms.UpdateCalculation(calculation);
+            return calculation;
+        }
+
+
+        [HttpPost]
+        public bool Post([FromBody]int calcId)
+        {
+            var calculation = _taxCalculationsQueryProvider.Query.Where(i => i.Id == calcId).First();
+
+            _calculationComms.DeleteCalculation(calculation);
+
             return true;
         }
 
-        //[HttpPost]
-        //public ActionResult<bool> Post([FromBody]int calcId)
-        //{
-        //    var calculation = _taxCalculationsQueryProvider.Query.Where(i => i.Id == calcId).First();
-
-        //    //_calculationComms.DeleteCalculation(calculation);
-
-        //    return true;
-        //}
     }
 }

@@ -35,16 +35,30 @@ export class FetchDataComponent {
     var scope = this;
 
     scope.calculation = JSON.parse(JSON.stringify(c));
-    scope.server.UpdateCalculation(scope.calculation)
+    scope.server.UpdateCalculation(scope.calculation).subscribe(i => {
+      console.log(i)
+      alert("Updated successfully.")
+    });
     debugger;
   }
 
-  deleteCalculation(c: TaxCalculation) {
-    debugger;
+  deleteCalculation(c: TaxCalculation, index: number) {
+    
     var scope = this;
 
-    scope.calculation = JSON.parse(JSON.stringify(c));
-    //scope.server.DeleteCalculation(scope.calculation);
+    var r = confirm("Are you sure you want to DELETE this calculation!");
+    if (r == true) {
+      //.subscribe(i => this.suppliers = i)
+      scope.calculation = JSON.parse(JSON.stringify(c));
+      scope.server.DeleteCalculation(scope.calculation.id).subscribe(m => {
+        console.log(m)
+        this.calculations.splice(index, 1);
+        alert('Deleted successfully.')
+      });
+    }
+    else {
+          //txt = "You pressed Cancel!";
+        }
   }
 
 }
