@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-//import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CalculationsComponent } from './calculations/calculations.component';
 import { ServerService } from './server.service';
@@ -18,7 +17,6 @@ import { ServerService } from './server.service';
     AppComponent,
     NavMenuComponent,
     HomeComponent,
-    //CounterComponent,
     FetchDataComponent,
     CalculationsComponent
   ],

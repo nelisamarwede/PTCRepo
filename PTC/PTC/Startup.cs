@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -32,9 +33,10 @@ namespace PTC
 
             #region Queries and Commands Dependancy Injection
 
-            services.AddTransient(typeof(IQueryProvider<>), typeof(QueryProvider<>));
-            services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
             services.AddTransient(typeof(CalculationCommands));
+            services.AddTransient(typeof(IQueryProvider<>), typeof(QueryProvider<>));
+            //services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
+            //services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
             //services.AddTransient(typeof())
             #endregion
 
@@ -55,6 +57,7 @@ namespace PTC
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -63,7 +66,6 @@ namespace PTC
             {
                 app.UseHsts();
             }
-
             app.UseCors("allowAll");
             app.UseHttpsRedirection();
             app.UseMvc();

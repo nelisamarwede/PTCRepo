@@ -16,16 +16,23 @@ namespace PTC.Domain.EF.Commands
 
         public TaxCalculation AddCalculation(TaxCalculation calculation)
         {
+            _context.Add(calculation);
+            _context.SaveChanges();
 
             return calculation;
         }
         public TaxCalculation UpdateCalculation(TaxCalculation calculation)
         {
+            _context.Attach(calculation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
+            _context.Update(calculation);
+            _context.SaveChanges();
 
             return calculation;
         }
         public bool DeleteCalculation(TaxCalculation calculation)
         {
+            _context.Attach(calculation).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
+            _context.SaveChanges();
 
             return true;
         }

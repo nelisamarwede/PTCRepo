@@ -14,9 +14,9 @@ namespace PTC.API.Controllers
     [ApiController]
     public class CalculationsController : ControllerBase
     {
-        private readonly CalculationCommands _calculationComms;
+        private readonly ICalculationCommands _calculationComms;
         private readonly IQueryProvider<TaxCalculation> _taxCalculationsQueryProvider;
-        public CalculationsController(IQueryProvider<TaxCalculation> taxCalculationsQueryProvider, CalculationCommands calculationComms)
+        public CalculationsController(IQueryProvider<TaxCalculation> taxCalculationsQueryProvider, ICalculationCommands calculationComms)
         {
             _calculationComms = calculationComms;
             _taxCalculationsQueryProvider = taxCalculationsQueryProvider;
@@ -25,20 +25,20 @@ namespace PTC.API.Controllers
         //public TaxCalculation AddCalculations(TaxCalculation calculation)
         //{
 
-        //    _calculationComms.AddCalculation(calculation);
 
+        //    _calculationComms.AddCalculation(calculation);
         //    return calculation;
         //}
 
-        //[HttpPost]
-        //public TaxCalculation Post([FromBody]TaxCalculation calculation)
-        //{
-        //    calculation.CreatedDate = DateTime.UtcNow;
+        [HttpPost]
+        public TaxCalculation Post([FromBody]TaxCalculation calculation)
+        {
+            calculation.CreatedDate = DateTime.UtcNow;
 
-        //    _calculationComms.AddCalculation(calculation);
+            _calculationComms.AddCalculation(calculation);
 
-        //    return calculation;
-        //}
+            return calculation;
+        }
         //public TaxCalculation UpdateCalculations(TaxCalculation calculation)
         //{
 
@@ -54,12 +54,11 @@ namespace PTC.API.Controllers
 
         //    return true;
         //}
-
+        [HttpGet]
         public ActionResult<IEnumerable<TaxCalculation>> Get()
         {            
             return _taxCalculationsQueryProvider.Query.ToList();
 
-            return null;
         }
     }
 }

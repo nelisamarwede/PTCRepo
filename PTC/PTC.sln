@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTC.Domain", "PTC.Domain\PT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTC.Domain.EF", "PTC.Domain.EF\PTC.Domain.EF.csproj", "{038A90E5-DD8C-401A-AECB-7A4696562556}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC.Client", "PTC.Client\PTC.Client.csproj", "{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PTC.Client", "PTC.Client\PTC.Client.csproj", "{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PTC.API.Tests", "PTC.API.Tests\PTC.API.Tests.csproj", "{C9A9EA5F-5AB7-4C99-B724-A1904E28D2A1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8E9D646-BF21-4D02-8BF8-771D0EF611A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9A9EA5F-5AB7-4C99-B724-A1904E28D2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9A9EA5F-5AB7-4C99-B724-A1904E28D2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9A9EA5F-5AB7-4C99-B724-A1904E28D2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9A9EA5F-5AB7-4C99-B724-A1904E28D2A1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

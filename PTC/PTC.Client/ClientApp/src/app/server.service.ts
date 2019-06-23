@@ -18,7 +18,7 @@ export class ServerService {
   }
 
   public GetCalculations(): Observable<TaxCalculation[]> {
-    return this.http.get<TaxCalculation[]>(this.GetUrl("Calculations"));
+    return this.http.get<TaxCalculation[]>(this.GetUrl("Calculation"));
   }
 
   public GetPostalCodes(): Observable<PostalCode[]> {
@@ -29,12 +29,27 @@ export class ServerService {
     return this.http.get<TaxType[]>(this.GetUrl("TaxCalculationType"));
   }
 
-  public AddCalculation(calculation: TaxCalculation): Observable<number> {
+  public AddCalculation(calculation: TaxCalculation): Observable<TaxCalculation> {
     debugger;
-    return this.http.post<number>(this.GetUrl("Calculations"), calculation);
+    //return this.http.get<string>(this.GetUrl("Values"));
+    debugger;
+    return this.http.post<TaxCalculation>(this.GetUrl("Calculation"), calculation);
     //return this.http.post<number>(this.GetUrl("Supplier"), supplier);
   }
-  //public AddSupplier(supplier: Supplier): Observable<number> {
-  //  return this.http.post<number>(this.GetUrl("Supplier"), supplier);
+
+  public UpdateCalculation(calculation: TaxCalculation): Observable<boolean> {
+    return this.http.put<boolean>(this.GetUrl("Calculation"), calculation);
+  }
+
+  //public DeleteCalculation(calculation: TaxCalculation): Observable<boolean> {
+  //  return this.http.post<boolean>(this.GetUrl("Calculation"), calculation);
+
   //}
+
+
+  //public UpdateOrder(order: Order): Observable<boolean> {
+  //  return this.http.put<boolean>(this.GetUrl("Order"), order);
+  //}
+
+
 }

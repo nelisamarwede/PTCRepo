@@ -10,11 +10,11 @@ namespace PTC.Domain.Entities
 
         public string FullName { get; set; }
 
-        public double Income { get; set; }
+        public decimal Income { get; set; }
 
         public string PostalCode { get; set; }
 
-        public double CalculatedTax { get; set; }
+        public decimal CalculatedTax { get; set; }
 
         public DateTime CreatedDate { get; set; }
 
