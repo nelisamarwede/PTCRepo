@@ -53,7 +53,7 @@ export class CalculationsComponent implements OnInit {
     debugger;
 
     var scope = this;
-    scope.annualIncome = e.target.value.toFixed(2);
+    scope.annualIncome = e.target.value;
     scope.getMonthlyIncome();
 
     if (scope.userPostalCode != null) {
@@ -169,7 +169,7 @@ export class CalculationsComponent implements OnInit {
 
   calc(perc) {
     var scope = this;
-    scope.calculatedTax = (perc * scope.annualIncome).toFixed(2);
+    scope.calculatedTax = perc * scope.annualIncome;
   }
 
   addCalculation() {
@@ -178,15 +178,20 @@ export class CalculationsComponent implements OnInit {
 
     var tc = new TaxCalculation();
     tc.income = scope.annualIncome;
-    tc.calculatedTax = scope.calculatedTax.toFixed(2);
+    tc.calculatedTax = scope.calculatedTax;
     tc.postalCode = scope.userPostalCode.codeName;
     tc.fullName = scope.fullName;
     //tc.CreatedDate = Date.now();
     scope.calculations = JSON.parse(JSON.stringify(tc));
 
+    
     debugger;
     scope.server.AddCalculation(scope.calculations).subscribe(i => {
       debugger;
+      var c = i;
+      alert('Save successfully.');
+
+      window.location.reload();
       //this.onOrderSaved.emit(i);
     }, e => console.log(e));;
 
