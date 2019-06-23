@@ -16,6 +16,8 @@ namespace PTC.Domain.EF.Commands
 
         public TaxCalculation AddCalculation(TaxCalculation calculation)
         {
+            calculation.CalculatedTax = Math.Round(calculation.CalculatedTax, 2);
+            calculation.Income = Math.Round(calculation.Income, 2);
             _context.Add(calculation);
             _context.SaveChanges();
 
@@ -23,6 +25,9 @@ namespace PTC.Domain.EF.Commands
         }
         public TaxCalculation UpdateCalculation(TaxCalculation calculation)
         {
+            calculation.CalculatedTax = Math.Round(calculation.CalculatedTax, 2);
+            calculation.Income = Math.Round(calculation.Income, 2);
+
             _context.Attach(calculation).State = Microsoft.EntityFrameworkCore.EntityState.Modified;
             _context.Update(calculation);
             _context.SaveChanges();

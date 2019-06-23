@@ -30,35 +30,16 @@ export class ServerService {
   }
 
   public AddCalculation(calculation: TaxCalculation): Observable<TaxCalculation> {
-    debugger;
-    //return this.http.get<string>(this.GetUrl("Values"));
-    debugger;
     return this.http.put<TaxCalculation>(this.GetUrl("Calculation"), calculation);
-    //return this.http.post<number>(this.GetUrl("Supplier"), supplier);
   }
   public UpdateCalculation(calculation: TaxCalculation): Observable<TaxCalculation> {
-    debugger;
-    //return this.http.get<string>(this.GetUrl("Values"));
-    debugger;
     return this.http.patch<TaxCalculation>(this.GetUrl("Calculation"), calculation);
-    //return this.http.post<number>(this.GetUrl("Supplier"), supplier);
   }
 
-
-  //public UpdateCalculation(calculation: TaxCalculation): Observable<TaxCalculation> {
-  //  return this.http.post<TaxCalculation>(this.GetUrl("Calculation"), calculation);
-  //}
 
   public DeleteCalculation(calcId: number): Observable<boolean> {
-    //debugger;
-    //this.http.delete(this.GetUrl("Calculation"), { id = 1 });
     return this.http.post<boolean>(this.GetUrl("Calculation"), calcId);
   }
-
-
-  //public UpdateOrder(order: Order): Observable<boolean> {
-  //  return this.http.put<boolean>(this.GetUrl("Order"), order);
-  //}
 
 
 }

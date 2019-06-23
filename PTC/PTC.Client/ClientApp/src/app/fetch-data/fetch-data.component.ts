@@ -26,7 +26,7 @@ export class FetchDataComponent {
 
     scope.server.GetCalculations()
       .subscribe(i => {
-        debugger;
+        
         scope.calculations = i;
       });
   }
@@ -39,7 +39,7 @@ export class FetchDataComponent {
       console.log(i)
       alert("Updated successfully.")
     });
-    debugger;
+
   }
 
   deleteCalculation(c: TaxCalculation, index: number) {

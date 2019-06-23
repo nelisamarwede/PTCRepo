@@ -20,7 +20,7 @@
     <tr *ngFor="let c of calculations; let i = index">
       <td><input [(ngModel)]="c.fullName"[ngModelOptions]="{standalone: true}" class="form-control" type="text" required value="{{c.fullName}}" /></td>
       <td><input [(ngModel)]="c.income"[ngModelOptions]="{standalone: true}" class="form-control" type="number" required value="{{c.income}}" /></td>
-      <td><input [(ngModel)]="c.postalCode"[ngModelOptions]="{standalone: true}" class="form-control" type="text" required value="{{c.postalCode}}" /></td>
+      <td><input [(ngModel)]="c.postalCode"[ngModelOptions]="{standalone: true}" class="form-control" type="text" required readonly value="{{c.postalCode}}" /></td>
       <td><input [(ngModel)]="c.postalCode"[ngModelOptions]="{standalone: true}" class="form-control" type="text" required readonly value="{{c.postalCode}}" /></td>
       <td><input [(ngModel)]="c.calculatedTax"[ngModelOptions]="{standalone: true}" class="form-control" type="number" required value="{{c.calculatedTax}}" /></td>
       <td>

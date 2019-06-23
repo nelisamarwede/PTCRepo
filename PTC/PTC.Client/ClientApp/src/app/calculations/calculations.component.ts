@@ -45,12 +45,10 @@ export class CalculationsComponent implements OnInit {
   }
 
   userFullName(e) {
-    debugger;
     this.fullName = e.target.value;
   }
 
   userIncomeInput(e) {
-    debugger;
 
     var scope = this;
     scope.annualIncome = e.target.value;
@@ -111,7 +109,6 @@ export class CalculationsComponent implements OnInit {
   calcProgressiveTax() {
     var scope = this;
 
-    debugger;
     var income = scope.monthlyIncome;
 
     if (income <= 8350) {//10%
@@ -145,7 +142,7 @@ export class CalculationsComponent implements OnInit {
 
   calcFlatValueTax() {
     var scope = this;
-    debugger;
+
     if (scope.annualIncome < 200000)
       scope.calc(scope.getPercentage(5));
     else
@@ -185,9 +182,7 @@ export class CalculationsComponent implements OnInit {
     scope.calculations = JSON.parse(JSON.stringify(tc));
 
     
-    debugger;
     scope.server.AddCalculation(scope.calculations).subscribe(i => {
-      debugger;
       var c = i;
       alert('Save successfully.');
 
