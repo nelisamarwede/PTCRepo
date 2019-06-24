@@ -28,8 +28,7 @@ namespace PTC.API.Tests.Controllers
         [TestInitialize]
         public void Setup()
         {
-            var fakeQueryProvider = A.Fake<IQueryProvider>();
-
+            //var fakeQueryProvider = A.Fake<IQueryProvider>();
 
             _taxCalculationQueryProvider = A.Fake<IQueryProvider<TaxCalculation>>();
             _calculationComm = A.Fake<ICalculationCommands>();

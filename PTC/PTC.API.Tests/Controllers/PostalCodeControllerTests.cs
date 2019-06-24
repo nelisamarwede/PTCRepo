@@ -1,5 +1,4 @@
-﻿using PTC.Domain;
-using PTC.Domain.Entities;
+﻿using PTC.Domain.Entities;
 using PTC.Domain.Queries.Providers;
 using PTC.API.Controllers;
 using FakeItEasy;
@@ -20,8 +19,7 @@ namespace PTC.API.Tests.Controllers
         private IQueryProvider<TaxType> _taxTypeQueryProvider;
 
         #endregion
-
-
+        
 
         #region Mocking and Initializing
 
