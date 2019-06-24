@@ -13,6 +13,7 @@ using PTC.Domain.EF.Inspectors.Calculators.Concrete;
 using PTC.Domain.EF.Inspectors.Calculators.Interface;
 using PTC.Domain.EF.Queries;
 using PTC.Domain.EF.Services;
+using PTC.Domain.Entities;
 using PTC.Domain.Interfaces;
 using PTC.Domain.Queries.Providers;
 
@@ -34,7 +35,7 @@ namespace PTC
             services.AddCors(i => { i.AddPolicy("allowAll", p => p.AllowAnyHeader().AllowAnyMethod().AllowAnyOrigin()); });
 
 
-            #region Queries and Commands Dependancy Injection
+            #region Dependancy Injection on Queries and Commands with respect to sepertion of concern and responsibility
 
             services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
             services.AddTransient(typeof(IQueryProvider<>), typeof(QueryProvider<>));
@@ -42,9 +43,8 @@ namespace PTC
             services.AddTransient(typeof(IFlatRateTaxCalculator), typeof(FlatRateTaxCalculator));
             services.AddTransient(typeof(IFlatValueTaxCalculator), typeof(FlatValueTaxCalculator));
             services.AddTransient(typeof(IProgressiveTaxCalculator), typeof(ProgressiveTaxCalculator));
-            //services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
-            //services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
-            //services.AddTransient(typeof())
+            services.AddTransient(typeof(ITaxType), typeof(TaxType));
+
             #endregion
 
             #region ApplicationContext

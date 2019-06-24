@@ -36,7 +36,6 @@ namespace PTC.Domain.EF.Inspectors
                 calculation = flatValueTaxCalculator.ProcessTax(calculation);
             }
 
-
             return calculation;
         }
     }

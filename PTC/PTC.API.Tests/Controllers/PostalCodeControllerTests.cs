@@ -26,11 +26,14 @@ namespace PTC.API.Tests.Controllers
         public void Setup()
         {
 
+            var fakeQueryProvider = A.Fake<IQueryProvider>();
 
             _postalCodeQueryProvider = A.Fake<IQueryProvider<PostalCode>>();
             _taxCalculationTypesQueryProvider = A.Fake<IQueryProvider<TaxType>>();
             _progressiveRatesQueryProvider = A.Fake<IQueryProvider<ProgressiveRate>>();
             _postalCodeController = new PostalCodeController(_postalCodeQueryProvider, _taxCalculationTypesQueryProvider, _progressiveRatesQueryProvider);
+
+            var test = fakeQueryProvider.CreateQuery<PostalCode>(_postalCodeQueryProvider.Query.Expression);
         }
         #endregion
 
