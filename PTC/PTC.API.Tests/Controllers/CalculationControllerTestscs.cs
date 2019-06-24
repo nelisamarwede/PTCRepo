@@ -15,7 +15,7 @@ namespace PTC.API.Tests.Controllers
     public class CalculationControllerTestscs
     {
 
-        #region Globals
+        #region Locals
 
         private CalculationController _calculationController;
         private IQueryProvider<TaxCalculation> _taxCalculationQueryProvider;
