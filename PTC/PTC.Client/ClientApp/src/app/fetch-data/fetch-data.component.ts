@@ -37,15 +37,27 @@ export class FetchDataComponent {
     scope.calculation = JSON.parse(JSON.stringify(c));
     scope.server.UpdateCalculation(scope.calculation).subscribe(i => {
       console.log(i)
+
       alert("Updated successfully.")
     });
 
   }
 
-  userIncomeInput(c: TaxCalculation) {
+  userIncomeInput(c: TaxCalculation, index: number) {
     var scope = this;
 
-    scope.server.CalculateTax(JSON.parse(JSON.stringify(c))).subscribe(m => c == m);
+    scope.server.CalculateTax(JSON.parse(JSON.stringify(c))).subscribe(m => {
+
+      console.log(m.calculatedTax);
+      this.calculations.forEach(function (item) {
+
+        if (item.id == m.id) {
+          item.calculatedTax = m.calculatedTax;
+         
+        debugger;
+        }
+      })
+    });
   }
 
   deleteCalculation(c: TaxCalculation, index: number) {
