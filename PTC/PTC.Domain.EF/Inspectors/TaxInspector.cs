@@ -13,7 +13,7 @@ namespace PTC.Domain.EF.Inspectors
         {
             var postalCode = calculation.PostalCode;
 
-            var taxTypeId = postalCodes.Query.Where(i => i.CodeName == postalCode).First().Id;
+            var taxTypeId = postalCodes.Query.Where(i => i.CodeName == postalCode).First().TaxTypeId;
             calculation = TaxTypeSelector(calculation, (int)taxTypeId, progressiveTaxCalculator, flatRateTaxCalculator, flatValueTaxCalculator);
 
             return calculation;

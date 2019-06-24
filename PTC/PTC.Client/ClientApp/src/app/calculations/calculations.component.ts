@@ -10,9 +10,11 @@ import { StyleCompiler } from '@angular/compiler';
 import { post } from 'selenium-webdriver/http';
 import { bloomAdd } from '@angular/core/src/render3/di';
 
+
 @Component({
   selector: 'app-calculations',
-  templateUrl: './calculations.component.html'
+  templateUrl: './calculations.component.html',
+  styleUrls: ['./toggle-button-styler.css']
 })
 
 export class CalculationsComponent implements OnInit {
@@ -25,6 +27,7 @@ export class CalculationsComponent implements OnInit {
   selectedItem: any;
   calculations: TaxCalculation;
   fullName: string;
+  serverInspectorOption: boolean = false;
 
   constructor(private server: ServerService) {
     this.calculatedTax = "";
@@ -66,20 +69,20 @@ export class CalculationsComponent implements OnInit {
 
     scope.postalCodes.forEach(function (item) {
       if (item.id == e) {
-        
+
         var bleh = new PostalCode();
         bleh.id = item.id;
         bleh.codeName = item.codeName;
         bleh.taxType = item.taxType;
 
         test = item;
-        
+
       }
     });
 
     scope.userPostalCode = test;
     scope.selectedItem = test;
-    
+
 
     if (scope.annualIncome != null) {
       scope.processUserInput();
@@ -90,18 +93,32 @@ export class CalculationsComponent implements OnInit {
   processUserInput() {
     var scope = this;
 
-    if (TaxTypeEnum.ProgressiveTax.toString() == scope.userPostalCode.taxTypeId) {
-      scope.calcProgressiveTax();
-    }
+    if (scope.serverInspectorOption) {
+      debugger;
+      var test = new TaxCalculation();
+      test.fullName = scope.fullName;
+      test.income = scope.annualIncome;
+      test.postalCode = scope.selectedItem.codeName;
 
-    else if (TaxTypeEnum.FlatValueTax.toString() == scope.userPostalCode.taxTypeId) {
-      scope.calcFlatValueTax();
-    }
+      scope.server.CalculateTax(test).subscribe(i => scope.calculations = i);
+      scope.calculatedTax = scope.calculations.calculatedTax
 
-    else if (TaxTypeEnum.FlatRateTax.toString() == scope.userPostalCode.taxTypeId) {
-      scope.caclFlatRateTax();
-    }
+    } else {
 
+      if (TaxTypeEnum.ProgressiveTax.toString() == scope.userPostalCode.taxTypeId) {
+        scope.calcProgressiveTax();
+      }
+
+      else if (TaxTypeEnum.FlatValueTax.toString() == scope.userPostalCode.taxTypeId) {
+        scope.calcFlatValueTax();
+      }
+
+      else if (TaxTypeEnum.FlatRateTax.toString() == scope.userPostalCode.taxTypeId) {
+        scope.caclFlatRateTax();
+      }
+
+
+    }
     scope.canSubmit = true;
 
   }
@@ -181,7 +198,7 @@ export class CalculationsComponent implements OnInit {
     //tc.CreatedDate = Date.now();
     scope.calculations = JSON.parse(JSON.stringify(tc));
 
-    
+
     scope.server.AddCalculation(scope.calculations).subscribe(i => {
       var c = i;
       alert('Save successfully.');

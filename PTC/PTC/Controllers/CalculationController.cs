@@ -25,7 +25,6 @@ namespace PTC.API.Controllers
         public TaxCalculation Put([FromBody]TaxCalculation calculation)
         {
             calculation.CreatedDate = DateTime.UtcNow;
-
             _calculationComms.AddCalculation(calculation);
 
             return calculation;
