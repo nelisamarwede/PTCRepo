@@ -14,12 +14,16 @@ namespace PTC.API.Tests.Controllers
     [TestClass]
     public class PostalCodeControllerTests
     {
-        #region Mocking and Initializing
 
-        private PostalCodeController _postalCodeController;
-        private IQueryProvider<PostalCode> _postalCodeQueryProvider;
-        private IQueryProvider<TaxType> _taxCalculationTypesQueryProvider;
-        private IQueryProvider<ProgressiveRate> _progressiveRatesQueryProvider;
+        #region Globals
+
+            private PostalCodeController _postalCodeController;     
+        
+        #endregion
+
+
+
+        #region Mocking and Initializing
 
 
         [TestInitialize]
@@ -28,12 +32,15 @@ namespace PTC.API.Tests.Controllers
 
             var fakeQueryProvider = A.Fake<IQueryProvider>();
 
-            _postalCodeQueryProvider = A.Fake<IQueryProvider<PostalCode>>();
-            _taxCalculationTypesQueryProvider = A.Fake<IQueryProvider<TaxType>>();
-            _progressiveRatesQueryProvider = A.Fake<IQueryProvider<ProgressiveRate>>();
-            _postalCodeController = new PostalCodeController(_postalCodeQueryProvider, _taxCalculationTypesQueryProvider, _progressiveRatesQueryProvider);
+            var postalCodeQueryProvider = A.Fake<IQueryProvider<PostalCode>>();
+            var taxCalculationTypesQueryProvider = A.Fake<IQueryProvider<TaxType>>();
 
-            var test = fakeQueryProvider.CreateQuery<PostalCode>(_postalCodeQueryProvider.Query.Expression);
+
+            A.CallTo(() => postalCodeQueryProvider.Query).WithAnyArguments().Returns(PostalCodeTestData.PostalCodes);
+            A.CallTo(() => taxCalculationTypesQueryProvider.Query).WithAnyArguments().Returns(PostalCodeTestData.TaxTypes);
+            _postalCodeController = new PostalCodeController(postalCodeQueryProvider, taxCalculationTypesQueryProvider);
+
+            var test = fakeQueryProvider.CreateQuery<PostalCode>(postalCodeQueryProvider.Query.Expression);
         }
         #endregion
 
@@ -86,10 +93,18 @@ namespace PTC.API.Tests.Controllers
         #region Tests
         [TestMethod]
         public void Can_Get_PostalCodes_With_Related_Tax_Types()
-        {
+        {                       
 
-            //A.CallTo(() => _postalCodeQueryProvider).WithAnyArguments().Returns(PostalCodeTestData.PostalCodes);
-            //A.CallTo(() => _postalCodeQueryProvider).WithAnyArguments().Returns(PostalCodeTestData.TaxTypes);
+            var result = _postalCodeController.Get();
+
+            Assert.IsTrue(result.Value.Count() > 0);//There is or are postal codes...
+
+            foreach (var item in result.Value)
+            {
+                Assert.IsNotNull(item.TaxType);//All existing Postal Codes are linked to their relevent types...
+                Assert.AreEqual(item.TaxTypeId, item.TaxType.Id);//There hasn't been data errors like mis-matching ID's on the Query...
+            }
+            
 
         }
 

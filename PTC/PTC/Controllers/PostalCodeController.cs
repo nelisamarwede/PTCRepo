@@ -13,14 +13,15 @@ namespace PTC.API.Controllers
     {
         private readonly IQueryProvider<PostalCode> _postalCodeQueryProvider;
         private readonly IQueryProvider<TaxType> _taxCalculationTypesQueryProvider;
-        private readonly IQueryProvider<ProgressiveRate> _progressiveRatesQueryProvider;
-        public PostalCodeController(IQueryProvider<PostalCode> postalCodeQueryProvider, IQueryProvider<TaxType> taxCalculationTypesQueryProvider
-            ,IQueryProvider<ProgressiveRate> progressiveRatesQueryProvider)
+        //private readonly IQueryProvider<ProgressiveRate> _progressiveRatesQueryProvider;
+        public PostalCodeController(IQueryProvider<PostalCode> postalCodeQueryProvider, IQueryProvider<TaxType> taxCalculationTypesQueryProvider)
         {
             _postalCodeQueryProvider = postalCodeQueryProvider;
             _taxCalculationTypesQueryProvider = taxCalculationTypesQueryProvider;
-            _progressiveRatesQueryProvider = progressiveRatesQueryProvider;
+            //_progressiveRatesQueryProvider = progressiveRatesQueryProvider;
         }
+
+        //go back to your note pad message. I did not read
 
         [HttpGet]
         public ActionResult<IEnumerable<PostalCode>> Get()
