@@ -4,10 +4,8 @@ using PTC.Domain.Queries.Providers;
 using PTC.API.Controllers;
 using FakeItEasy;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using PTC.Domain.EF.Queries;
 
 namespace PTC.API.Tests.Controllers
 {
@@ -45,7 +43,7 @@ namespace PTC.API.Tests.Controllers
         #endregion
 
 
-        #region MockData
+        #region Mock Data
         public static class PostalCodeTestData
         {
 
@@ -86,8 +84,7 @@ namespace PTC.API.Tests.Controllers
 
 
         #endregion
-
-
+        
 
 
         #region Tests
@@ -95,11 +92,11 @@ namespace PTC.API.Tests.Controllers
         public void Can_Get_PostalCodes_With_Related_Tax_Types()
         {                       
 
-            var result = _postalCodeController.Get();
+            var results = _postalCodeController.Get();
 
-            Assert.IsTrue(result.Value.Count() > 0);//There is or are postal codes...
+            Assert.IsTrue(results.Value.Count() > 0);//There is or are postal codes...
 
-            foreach (var item in result.Value)
+            foreach (var item in results.Value)
             {
                 Assert.IsNotNull(item.TaxType);//All existing Postal Codes are linked to their relevent types...
                 Assert.AreEqual(item.TaxTypeId, item.TaxType.Id);//There hasn't been data errors like mis-matching ID's on the Query...
