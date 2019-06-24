@@ -8,6 +8,9 @@ using Microsoft.Extensions.DependencyInjection;
 using PTC.Domain.EF.Commands;
 using PTC.Domain.EF.Commands.Interface;
 using PTC.Domain.EF.Context;
+using PTC.Domain.EF.Inspectors;
+using PTC.Domain.EF.Inspectors.Calculators.Concrete;
+using PTC.Domain.EF.Inspectors.Calculators.Interface;
 using PTC.Domain.EF.Queries;
 using PTC.Domain.EF.Services;
 using PTC.Domain.Interfaces;
@@ -33,8 +36,12 @@ namespace PTC
 
             #region Queries and Commands Dependancy Injection
 
-            services.AddTransient(typeof(CalculationCommands));
+            services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
             services.AddTransient(typeof(IQueryProvider<>), typeof(QueryProvider<>));
+            services.AddTransient(typeof(ITaxInspector), typeof(TaxInspector));
+            services.AddTransient(typeof(IFlatRateTaxCalculator), typeof(FlatRateTaxCalculator));
+            services.AddTransient(typeof(IFlatValueTaxCalculator), typeof(FlatValueTaxCalculator));
+            services.AddTransient(typeof(IProgressiveTaxCalculator), typeof(ProgressiveTaxCalculator));
             //services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
             //services.AddTransient(typeof(ICalculationCommands), typeof(CalculationCommands));
             //services.AddTransient(typeof())

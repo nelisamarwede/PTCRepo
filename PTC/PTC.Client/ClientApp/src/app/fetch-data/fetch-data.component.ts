@@ -42,6 +42,12 @@ export class FetchDataComponent {
 
   }
 
+  userIncomeInput(c: TaxCalculation) {
+    var scope = this;
+
+    scope.server.CalculateTax(JSON.parse(JSON.stringify(c))).subscribe(m => c == m);
+  }
+
   deleteCalculation(c: TaxCalculation, index: number) {
     
     var scope = this;

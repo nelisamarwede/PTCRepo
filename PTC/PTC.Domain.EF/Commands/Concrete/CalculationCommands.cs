@@ -1,4 +1,5 @@
-﻿using PTC.Domain.EF.Context;
+﻿using PTC.Domain.EF.Commands.Interface;
+using PTC.Domain.EF.Context;
 using PTC.Domain.Entities;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Text;
 
 namespace PTC.Domain.EF.Commands
 {
-    public class CalculationCommands : CommandBase
+    public class CalculationCommands : CommandBase, ICalculationCommands
     {
         public CalculationCommands(ApplicationContext applicationContext) 
             : base(applicationContext)

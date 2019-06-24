@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using PTC.Domain.EF.Commands;
+using PTC.Domain.EF.Commands.Interface;
 using PTC.Domain.Entities;
 using PTC.Domain.Queries.Providers;
 
@@ -12,9 +12,9 @@ namespace PTC.API.Controllers
     [ApiController]
     public class CalculationController : ControllerBase
     {
-        private readonly CalculationCommands _calculationComms;
+        private readonly ICalculationCommands _calculationComms;
         private readonly IQueryProvider<TaxCalculation> _taxCalculationsQueryProvider;
-        public CalculationController(IQueryProvider<TaxCalculation> taxCalculationsQueryProvider, CalculationCommands calculationComms)
+        public CalculationController(IQueryProvider<TaxCalculation> taxCalculationsQueryProvider, ICalculationCommands calculationComms)
         {
             _calculationComms = calculationComms;
             _taxCalculationsQueryProvider = taxCalculationsQueryProvider;

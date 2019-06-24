@@ -41,5 +41,8 @@ export class ServerService {
     return this.http.post<boolean>(this.GetUrl("Calculation"), calcId);
   }
 
+  public CalculateTax(calculation: TaxCalculation): Observable<TaxCalculation> {
+    return this.http.patch<TaxCalculation>(this.GetUrl("Accelerator"), calculation);
+  }
 
 }
